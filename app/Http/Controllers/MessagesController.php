@@ -18,7 +18,8 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        //
+      $mensajes = DB::table('messages')->get();
+       return view('messages.index', compact('mensajes'));
     }
 
     /**
@@ -28,7 +29,7 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        return view('messages.create');
+      return view('messages.create');
     }
 
     /**
