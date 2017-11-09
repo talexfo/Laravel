@@ -16,13 +16,7 @@ Route::get('/', ['as' => 'inicio', 'uses' => 'PagesController@inicio']);
 
 /* ->middleware('example'); */
 
-
-Route::get('contactame', ['as' => 'contactos', 'uses' => 'PagesController@contactos']);
-
-Route::post('contacto','PagesController@mensajes');
-
 Route::get('saludos/{nombre?}', ['as' => 'saludos', 'uses' => 'PagesController@saludos'])->Where('nombre', "[A-Za-z]+");
-
 
 /* messages.create (nombrerecurso.metododelcontrolador) */
 
@@ -48,3 +42,22 @@ Route::delete('mensajes/{id}', ['as' => 'messages.destroy', 'uses' => 'MessagesC
 
  */
 
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+
+Route::post('login', 'Auth\LoginController@login');
+
+Route::get('logout', 'Auth\LoginController@logout');
+
+
+
+
+/* 
+Route::get('test', function() {
+    $user = new App\User;
+    $user->name = 'tito';
+    $user->email = 'titofarinas@gmail.com';
+    $user->password = bcrypt('admin2.1');
+    $user->save();
+});
+ */

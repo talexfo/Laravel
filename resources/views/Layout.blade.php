@@ -40,7 +40,24 @@
 			<a class="{{activeMenu('/')}}" href="{{ route('inicio')  }} ">Inicio</a>			
 			<a class="{{activeMenu('saludos/*')}}" href="{{route('saludos', 'Alejandro')}} ">Saludos</a>
 	 		<a class="{{activeMenu('mensajes/create')}}" href="{{ route('mensajes.create') }}">Contactos</a>
-	 		<a class="{{activeMenu('mensajes')}}" href="{{ route('mensajes.index') }}">Mensajes</a>
+	 		
+
+@if (auth()->guest())
+	
+<a class="{{activeMenu('login')}}" href="/login">Login</a>
+@endif
+
+
+@if (auth()->check())
+
+<a class="{{activeMenu('mensajes')}}" href="{{ route('mensajes.index') }}">Mensajes</a>
+
+	<a href="/logout">Cerrar sesión de {{ auth()->user()->name }}</a>
+
+@endif
+
+
+
 		</nav>
 	</header>
 

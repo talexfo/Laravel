@@ -24,10 +24,11 @@ public function __construct()
 
 
 
-public function mensajes(CreateMessageRequest $request)
+/* public function mensajes(CreateMessageRequest $request)
 {
   $data =  $request->all();
 
+ */
 
   /* return redirect('/'); */
 
@@ -35,10 +36,13 @@ public function mensajes(CreateMessageRequest $request)
         ->route('contactos')
         ->with('info', 'Tu mensaje ha sido enviado correctamente'); */
 
+/* 
         return back()->with('info', 'Tu mensaje ha sido enviado correctamente');
  
   
 }
+ */
+
 
 
 
@@ -50,12 +54,6 @@ public function mensajes(CreateMessageRequest $request)
   }
 
 
-  public function contactos()
-  {
-  	# code...
-
-  	return view('contactos');
-  }
 
 
   public function saludos($nombre = "Invitado")

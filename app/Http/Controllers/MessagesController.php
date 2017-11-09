@@ -11,6 +11,19 @@ use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
+
+public function __construct()
+{
+  /* 
+  $this->middleware('auth', ['except' => [
+            'create', 'store'
+        ]]);
+   */
+  
+
+  $this->middleware('auth');
+}
+
     /**
      * Display a listing of the resource.
      *
@@ -83,7 +96,7 @@ class MessagesController extends Controller
            
 
         //Redireccionar
-        return redirect()->route('mensajes.index');
+        return redirect()->route('mensajes.create')->with('info', 'Hemos recibido tu mensaje');
     }
 
     /**
