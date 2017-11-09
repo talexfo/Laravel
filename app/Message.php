@@ -12,4 +12,11 @@ class Message extends Model
 	
     /* protected $table = 'NombreTabla'; */
     
+
+    protected $fillable = [
+    	'nombre',
+    	'email',
+    	'mensaje'
+    ];
+
 }

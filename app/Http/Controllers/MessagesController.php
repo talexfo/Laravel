@@ -59,13 +59,28 @@ class MessagesController extends Controller
          */
         
 //Metodo 1
-            $mensaje = new Message;
+           /* 
+
+ $mensaje = new Message;
             $mensaje->nombre = $request->input('nombre');
             $mensaje->email = $request->input('email');
             $mensaje->mensaje = $request->input('mensaje');
-            $mensaje->created_at = Carbon::now();
-            $mensaje->updated_at = Carbon::now();
-            $mensaje->save():
+          
+            $mensaje->save();
+            */
+           
+           //Metodo 2
+
+            Message::create(
+ /* [
+                "nombre" => $request->input('nombre'),
+                "email" => $request->input('email'),
+                "mensaje" => $request->input('mensaje'),
+               
+            ] */
+ $request->all()
+            );
+           
 
         //Redireccionar
         return redirect()->route('mensajes.index');
@@ -79,7 +94,10 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        $mensaje = DB::table('messages')->where('id', $id)->first();
+       /*  $mensaje = DB::table('messages')->where('id', $id)->first();*/
+
+
+       $mensaje = Message::findOrFail($id);
 
         return view('messages.show', compact('mensaje'));
     }
@@ -93,7 +111,9 @@ class MessagesController extends Controller
     public function edit($id)
     {
 
-        $mensaje = DB::table('messages')->where('id', $id)->first();
+       /*  $mensaje = DB::table('messages')->where('id', $id)->first();*/
+       
+          $mensaje = Message::findOrFail($id);
         return view('messages.edit', compact('mensaje'));
     }
 
@@ -107,7 +127,18 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
         //Actualizamos
-            DB::table('messages')->where('id', $id)->update(
+
+/*  $mensaje = Message::findOrFail($id);
+
+ $mensaje->update($request->all()); */
+
+
+
+  
+
+           /* 
+
+ DB::table('messages')->where('id', $id)->update(
 [
                 "nombre" => $request->input('nombre'),
                 "email" => $request->input('email'),
@@ -116,8 +147,10 @@ class MessagesController extends Controller
 ]
             );
 
-        //Redireccionamos
+            */
+           
 
+            Message::findOrFail($id)->update($request->all());
             return redirect()->route('mensajes.index');
     }
 
@@ -130,7 +163,11 @@ class MessagesController extends Controller
     public function destroy($id)
     {
 
-         DB::table('messages')->where('id', $id)->delete();
+/*  DB::table('messages')->where('id', $id)->delete(); */
+
+
+    Message::findOrFail($id)->delete();
+        
         return redirect()->route('mensajes.index');
     }
 }
