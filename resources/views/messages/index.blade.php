@@ -13,6 +13,7 @@
 	<th>Nombre</th>
 	<th>Email</th>
 	<th>Mensaje</th>
+	<th>Acciones</th>
 </tr>
 		
 	</thead>
@@ -21,9 +22,19 @@
 
 <tr>
 	<td>{{$item->id}}</td>
-	<td>{{$item->nombre}}</td>
+	<td><a href=" {{ route('messages.show', $item->id) }} ">{{$item->nombre}}</a></td>
 	<td>{{$item->email}}</td>
 	<td>{{$item->mensaje}}</td>
+	<td>
+		<a href=" {{ route('messages.edit', $item->id) }}">Editar</a>
+<form style="display:inline" method="POST" action="{{ route('messages.destroy', $item->id) }}">
+	
+{{ method_field('DELETE') }}
+	{{ csrf_field() }}
+	<button type="submit">Eliminar</button>
+</form>
+
+	</td>
 </tr>
 
 
