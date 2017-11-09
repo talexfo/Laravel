@@ -16,7 +16,7 @@
 
 	
 
-<form action="{{ route('messages.store')}}" method="POST">
+<form action="{{ route('mensajes.store')}}" method="POST">
 	<!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 
 	{!! csrf_field() !!}

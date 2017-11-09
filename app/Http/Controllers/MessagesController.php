@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\message;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,7 +18,11 @@ class MessagesController extends Controller
      */
     public function index()
     {
-      $mensajes = DB::table('messages')->get();
+     /*  $mensajes = DB::table('messages')->get(); */
+      /* $mensajes = Message::all()->where('nombre','=' ,"jvalle"); */
+
+      $mensajes = Message::all();
+      
        return view('messages.index', compact('mensajes'));
     }
 
@@ -43,7 +47,8 @@ class MessagesController extends Controller
 
        //Guardar el mensaje
 
-        DB::table('messages')->insert(
+        /* 
+            DB::table('messages')->insert(
             [
                 "nombre" => $request->input('nombre'),
                 "email" => $request->input('email'),
@@ -51,10 +56,19 @@ class MessagesController extends Controller
                 "created_at" => Carbon::now(),
                 "updated_at" => Carbon::now(),
             ]);
-
+         */
+        
+//Metodo 1
+            $mensaje = new Message;
+            $mensaje->nombre = $request->input('nombre');
+            $mensaje->email = $request->input('email');
+            $mensaje->mensaje = $request->input('mensaje');
+            $mensaje->created_at = Carbon::now();
+            $mensaje->updated_at = Carbon::now();
+            $mensaje->save():
 
         //Redireccionar
-        return redirect()->route('messages.index');
+        return redirect()->route('mensajes.index');
     }
 
     /**
@@ -104,7 +118,7 @@ class MessagesController extends Controller
 
         //Redireccionamos
 
-            return redirect()->route('messages.index');
+            return redirect()->route('mensajes.index');
     }
 
     /**
@@ -117,6 +131,6 @@ class MessagesController extends Controller
     {
 
          DB::table('messages')->where('id', $id)->delete();
-        return redirect()->route('messages.index');
+        return redirect()->route('mensajes.index');
     }
 }

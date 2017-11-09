@@ -7,7 +7,7 @@
 
 
 
-<form action="{{ route('messages.update', $mensaje->id )}}" method="POST">
+<form action="{{ route('mensajes.update', $mensaje->id )}}" method="POST">
 	<!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 	{!! method_field('PUT') !!}
 	{!! csrf_field() !!}
