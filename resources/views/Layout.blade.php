@@ -99,7 +99,7 @@
 <footer><p>www.MultiCreativos.com | Copyright {{ date('Y') }}</p></footer>
 
 </div>
-
+<script src="/js/all.js"></script>
 
 
 </body>
