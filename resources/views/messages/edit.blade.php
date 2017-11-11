@@ -14,24 +14,24 @@
 	
 	<p><label for="nombre">
 		Nombre
-		<input type="text" name="nombre" value="{{ $mensaje->nombre }}">
+		<input class="form-control" type="text" name="nombre" value="{{ $mensaje->nombre }}">
 		{!! $errors ->first('nombre','<span class=error>:message</span>')!!}
 	</label></p>
 
 	<p><label for="email">
 		Email
-		<input type="text" name="email" value="{{ $mensaje->email }}">
+		<input class="form-control" type="text" name="email" value="{{ $mensaje->email }}">
 		{!! $errors ->first('email','<span class=error>:message</span>')!!}
 	</label></p>
 
 <p>
 	<label for="mensaje">
 		Mensaje
-		<textarea name="mensaje" id="" cols="30" rows="5">{{ $mensaje->mensaje }}</textarea>
+		<textarea class="form-control" name="mensaje" id="" cols="30" rows="5">{{ $mensaje->mensaje }}</textarea>
 		{!!$errors ->first('mensaje','<span class=error>:message</span>')!!}
 	</label>
 </p>
-	<input type="submit" value="Enviar">
+	<input class="btn btn-primary" type="submit" value="Enviar">
 </form>
 
 @endsection
