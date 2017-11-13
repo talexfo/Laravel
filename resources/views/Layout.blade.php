@@ -39,6 +39,7 @@
 <li  class="{{activeMenu('saludos/*')}}"><a href="{{route('saludos', 'Alejandro')}} ">Saludos</a></li>
 				
 				<li class="{{activeMenu('mensajes/create')}}"><a  href="{{ route('mensajes.create') }}">Contactos</a></li>
+				
 
 				
 					 		
@@ -49,6 +50,14 @@
 				@if (auth()->check())
 
 				<li class="{{activeMenu('mensajes*')}}" ><a href="{{ route('mensajes.index') }}">Mensajes</a></li>
+
+@if (auth()->user()->hasRole(['admin', 'estudiante']))
+
+<li class="{{activeMenu('usuarios')}}"><a  href="{{ route('usuarios.index') }}">Usuarios</a></li>
+
+@endif
+
+
 
 				@endif
 
@@ -64,20 +73,17 @@
 				<li  class="{{activeMenu('login')}}"><a href="/login">Login</a></li>
 				@else
 					
-
-						<li><a href="/logout">Cerrar sesión de {{ auth()->user()->name }}</a></li>
+								<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->name }} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/logout">Cerrar sesión</a></li>
+							
+						</ul>
+					</li> 
 					@endif
 
 
-	<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li><a href="#">Separated link</a></li>
-					</ul>
-				</li> 
+
 				
 			</ul>
 		</div><!-- /.navbar-collapse -->

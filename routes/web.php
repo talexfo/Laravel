@@ -23,6 +23,7 @@ Route::get('saludos/{nombre?}', ['as' => 'saludos', 'uses' => 'PagesController@s
 
 
 Route::resource('mensajes', 'MessagesController');
+Route::resource('usuarios', 'UsuariosController');
 
 /* 
 
@@ -53,11 +54,13 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 
 /* 
+
+ */
 Route::get('test', function() {
     $user = new App\User;
-    $user->name = 'tito';
-    $user->email = 'titofarinas@gmail.com';
+    $user->name = 'Moderador';
+    $user->email = 'moderador@email.com';
     $user->password = bcrypt('admin2.1');
+    $user->role_id = 2;
     $user->save();
 });
- */
