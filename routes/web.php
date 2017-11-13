@@ -56,7 +56,17 @@ Route::get('logout', 'Auth\LoginController@logout');
 /* 
 
  */
-Route::get('test', function() {
+
+Route::get('test1', function() {
+    $user = new App\User;
+    $user->name = 'Admin';
+    $user->email = 'admin@email.com';
+    $user->password = bcrypt('admin2.1');
+    $user->role_id = 1;
+    $user->save();
+});
+
+Route::get('test2', function() {
     $user = new App\User;
     $user->name = 'Moderador';
     $user->email = 'moderador@email.com';
