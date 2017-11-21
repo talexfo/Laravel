@@ -24,7 +24,14 @@
 	<td>{{$item->id}}</td>
 	<td>{{$item->name}}</td>
 	<td>{{$item->email}}</td>
-	<td>{{$item->role->display_name}}</td>
+	<td>
+@foreach ($item->roles as $role)
+	{{$role->display_name}}
+@endforeach
+		
+
+
+	</td>
 	<td>
 		
 

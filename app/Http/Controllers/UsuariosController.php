@@ -12,7 +12,7 @@ class UsuariosController extends Controller
 
 public function __construct()
 {
-    $this->middleware(['auth', 'roles:admin,estudiante']);
+    $this->middleware(['auth', 'roles:admin']);
     
 }
 

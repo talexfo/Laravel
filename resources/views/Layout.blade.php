@@ -51,7 +51,7 @@
 
 				<li class="{{activeMenu('mensajes*')}}" ><a href="{{ route('mensajes.index') }}">Mensajes</a></li>
 
-@if (auth()->user()->hasRole(['admin', 'estudiante']))
+@if (auth()->user()->hasRole(['admin']))
 
 <li class="{{activeMenu('usuarios')}}"><a  href="{{ route('usuarios.index') }}">Usuarios</a></li>
 

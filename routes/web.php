@@ -52,10 +52,13 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 
 
+Route::get('roles', function(){
+	return \App\Role::with('user')->get();
+});
+
 
 /* 
 
- */
 
 Route::get('test1', function() {
     $user = new App\User;
@@ -74,3 +77,5 @@ Route::get('test2', function() {
     $user->role_id = 2;
     $user->save();
 });
+
+ */
